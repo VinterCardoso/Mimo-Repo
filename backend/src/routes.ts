@@ -1,5 +1,7 @@
-import { Router } from "express";
+import { FastifyTypedInstance } from "./types.js";
 
-const router = Router();
-
-export { router }
+export async function routes(app: FastifyTypedInstance) {
+    app.get('/', async (request, reply) => {
+        return { hello: 'world' }
+    })
+}

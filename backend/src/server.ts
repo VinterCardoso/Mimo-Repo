@@ -1,8 +1,37 @@
-import { app } from './app'
-import { connection } from './connectDB'
+import { fastify } from 'fastify';
+import fastifyCors from '@fastify/cors';
+import { env } from './infra/env';
+import { validatorCompiler, serializerCompiler } from 'fastify-type-provider-zod';
+import fastifySwagger from '@fastify/swagger';
+import fastifySwaggerUi from '@fastify/swagger-ui';
+import { routes } from './routes.js';
 
-const port = process.env.BACKEND_APP_PORT;
+const app = fastify().withTypeProvider<ZodProvider>();
 
-app.listen(port);
+app.setValidatorCompiler(validatorCompiler);
+app.setSerializerCompiler(serializerCompiler);
 
-console.log(`Rodando em ${port}`)
+app.register(fastifyCors, { origin: '*' });
+
+app.register(fastifySwagger, {
+    openapi: {
+        info: {
+            title: 'Mimo API',
+            version: '1.0.0',
+        },
+    },
+})
+
+app.register(fastifySwaggerUi, {
+    routePrefix: '/docs'
+})
+
+app.register(routes);
+
+app.listen({ port: env.BACKEND_APP_PORT }, (err, address) => {
+  if (err) {
+    console.error(err);
+    process.exit(1);
+  }
+  console.log(`Server running on port ${env.BACKEND_APP_PORT}`);
+})
