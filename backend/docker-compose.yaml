@@ -3,7 +3,7 @@ version: '3.8'
 services:
   mysql:
     image: mysql:8
-    container_name: mysql8
+    container_name: mimo-mysql
     environment:
       MYSQL_DATABASE: mimo
       MYSQL_ROOT_PASSWORD: root
@@ -11,9 +11,6 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./server-key.pem:/etc/mysql/ssl/server-key.pem
-      - ./server-public-key.pem:/etc/mysql/ssl/server-public-key.pem
-      - ./custom_my.cnf:/etc/mysql/conf.d/custom.cnf
 
 volumes:
   mysql_data:
