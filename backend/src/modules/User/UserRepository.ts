@@ -1,12 +1,13 @@
 import { prisma } from "../../infra/database.js";
 import { IUserRepository, User } from "../../model/User.js";
+import { User } from "../../model/User.js";
 
 class UserRepository implements IUserRepository {
-    async create(data) {
+    async create(data): Promise<User> {
         return prisma.user.create({ data });
     }
     
-    async findMany() {
+    async findMany(): Promise<User[]> {
         return prisma.user.findMany();
     }
 
@@ -14,15 +15,15 @@ class UserRepository implements IUserRepository {
         return prisma.user.findUnique({where : {email}});
     }
     
-    async findById(id) {
+    async findById(id): Promise<User> {
         return prisma.user.findUnique({ where: { id } });
     }
     
-    async update(id, data) {
+    async update(id, data): Promise<User> {
         return prisma.user.update({ where: { id }, data });
     }
     
-    async delete(id) {
+    async delete(id): void {
         return prisma.user.delete({ where: { id } });
     }
 }

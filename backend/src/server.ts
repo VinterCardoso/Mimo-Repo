@@ -5,6 +5,7 @@ import { validatorCompiler, serializerCompiler } from 'fastify-type-provider-zod
 import fastifySwagger from '@fastify/swagger';
 import fastifySwaggerUi from '@fastify/swagger-ui';
 import { routes } from './routes.js';
+import { userController } from './modules/User/UserController.js';
 
 const app = fastify().withTypeProvider<ZodProvider>();
 
@@ -27,6 +28,7 @@ app.register(fastifySwaggerUi, {
 })
 
 app.register(routes);
+app.register(userController);
 
 app.listen({ port: env.BACKEND_APP_PORT }, (err, address) => {
   if (err) {

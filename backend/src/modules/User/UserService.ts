@@ -15,14 +15,36 @@ class UserService implements IUserService {
     }
 
     async getUserById(id) {
-        return this.userRepository.findById(id);
+        const user = await this.userRepository.findById(id);
+
+        if (!user) {
+            throw new Error('User not found');
+        }
+
+        return user;
     }
 
     async updateUser(id, data) {
-        return this.userRepository.update(id, data);
+        const user = await this.userRepository.findById(id);
+
+        if (!user) {
+            throw new Error('User not found');
+        }
+
+        user.name = data.name || user.name;
+        user.email = data.email || user.email;
+        user.role = data.role || user.role;
+
+        return this.userRepository.update(id, user);
     }
 
     async deleteUser(id) {
+        const user = await this.userRepository.findById(id);
+
+        if (!user) {
+            throw new Error('User not found');
+        }
+
         return this.userRepository.delete(id);
     }
 }
