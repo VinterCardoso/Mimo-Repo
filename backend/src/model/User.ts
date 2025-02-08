@@ -1,6 +1,6 @@
 import { Role } from "../types/Roles.js";
 
-type User {
+type User = {
     id: string;
     name: string;
     email: string;

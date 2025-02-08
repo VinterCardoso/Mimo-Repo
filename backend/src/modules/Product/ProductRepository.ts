@@ -18,7 +18,7 @@ class ProductRepository implements IProductRepository {
         return prisma.product.update({ where: { id }, data });
     }
     
-    async delete(id): void {
+    async delete(id): Promise<void> {
         return prisma.product.delete({ where: { id } });
     }
 }
