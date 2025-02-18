@@ -8,7 +8,7 @@ import { routes } from './routes.js';
 import { userController } from './modules/User/UserController.js';
 import { productController } from './modules/Product/ProductController.js';
 
-const app = fastify().withTypeProvider<ZodProvider>();
+const app = fastify({logger: true}).withTypeProvider<ZodProvider>();
 
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
