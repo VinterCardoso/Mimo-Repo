@@ -18,6 +18,7 @@ Os commits devem seguir o padrão "tipo(origem): mensagem do commit"
 - Origem:
     - back: Quando o que foi desenvolvido foi feito no back-end
     - front: Quando o que foi desenvolvido foi feito no front-end
+    - general: Quando mudanças foram feitas em ambos os projetos ou na raiz do repositório
 
 # Workflow
 
