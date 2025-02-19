@@ -26,5 +26,6 @@ model Product {
   name        String
   description String?
   price       Float
+  quantity    Int    @default(0)
   @@map("product")
 }
