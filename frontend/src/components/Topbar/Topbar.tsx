@@ -15,7 +15,9 @@ function Topbar() {
             <TopbarCoupon />
             <Box sx={{display: 'flex', gap: '45px', alignItems: 'center'}}>
                 <Box sx={{width: '320px'}}>
+                    <a href="/">
                     <img src={mimoLogo} alt="Mimo" width={300} />
+                    </a>
                 </Box>
                 <Box>
                     <Search />
