@@ -47,7 +47,8 @@ class ProductService implements IProductService {
             throw new Error('Product not found');
         }
 
-        return this.productRepository.delete(id);
+        product.deletedAt = new Date();
+        this.productRepository.update(id, product);
     }
 }
 
