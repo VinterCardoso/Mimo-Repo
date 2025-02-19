@@ -35,6 +35,7 @@ class ProductService implements IProductService {
         product.description = data.description || product.description;
         product.price = data.price || product.price;
         product.quantity = data.quantity || product.quantity;
+        product.unavailable = data.unavailable || product.unavailable;
 
         return this.productRepository.update(id, product);
     }

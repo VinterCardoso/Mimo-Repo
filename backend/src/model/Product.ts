@@ -4,6 +4,7 @@ export type Product = {
     description: string;
     price: number;
     quantity: number;
+    unavailable: boolean;
 }
 
 export interface IProductRepository {
