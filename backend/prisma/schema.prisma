@@ -28,6 +28,6 @@ model Product {
   price       Float
   quantity    Int      @default(0)
   unavailable Boolean  @default(false)
-  deletedAt   DateTime 
+  deletedAt   DateTime? 
   @@map("product")
 }
