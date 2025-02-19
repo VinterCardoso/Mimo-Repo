@@ -7,7 +7,7 @@ class ProductRepository implements IProductRepository {
     }
     
     async findMany(): Promise<Product[]> {
-        return prisma.product.findMany();
+        return prisma.product.findMany({ where: { deletedAt : null } });
     }
     
     async findById(id): Promise<Product> {
