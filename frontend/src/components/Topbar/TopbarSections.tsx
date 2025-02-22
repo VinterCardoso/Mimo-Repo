@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import { Link } from "react-router-dom";
 
 type Section = {
     name: string;
@@ -7,23 +8,35 @@ type Section = {
 
 function TopbarSections() {
     const sections: Section[] = [
-        { name: 'cachorro', url: '' },
-        { name: 'gato', url: '' },
-        { name: 'pássaro', url: '' },
-        { name: 'peixe', url: '' },
-        { name: 'outros pets', url: '' },
-        { name: 'outlet até 90% off', url: '' },
-        { name: 'mimo healthcare', url: '' },
-        { name: 'clube de fidelidade', url: '' },
-        { name: 'mais', url: '' }
+        { name: 'cachorro', url: '/dog-items' },
+        { name: 'gato', url: '/cat-items' },
+        { name: 'pássaro', url: '/bird-items' },
+        { name: 'peixe', url: '/fish-items' },
+        { name: 'outros pets', url: '/other-pets' },
+        { name: 'outlet até 90% off', url: '/outlet' },
+        { name: 'mimo healthcare', url: '/mimo-healthcare' },
+        { name: 'clube de fidelidade', url: '/loyalty-club' },
+        { name: 'mais', url: '/more' }
     ];
 
     return (
         <Box sx={{display: 'flex', gap: '20px', alignItems: 'center', backgroundColor: 'white', borderRadius: '8px', padding: '10px 20px'}}>
             {sections.map(section => (
-                <Box key={section.name} sx={{marginRight: '20px', cursor: 'pointer', fontWeight: 'bold', fontSize: '14px', color: 'black', textTransform: 'uppercase'}}>
+                <Link
+                    key={section.name}
+                    to={section.url}
+                    style={{
+                        marginRight: '20px',
+                        cursor: 'pointer',
+                        fontWeight: 'bold',
+                        fontSize: '14px',
+                        color: 'black',
+                        textTransform: 'uppercase',
+                        textDecoration: 'none' // Remove o sublinhado padrão do link
+                    }}
+                >
                     {section.name}
-                </Box>
+                </Link>
             ))}
         </Box>
     )
