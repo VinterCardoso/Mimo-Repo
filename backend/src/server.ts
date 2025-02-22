@@ -7,6 +7,7 @@ import fastifySwaggerUi from '@fastify/swagger-ui';
 import { routes } from './routes.js';
 import { userController } from './modules/User/UserController.js';
 import { productController } from './modules/Product/ProductController.js';
+import { addressController } from './modules/Address/AddressController.js';
 
 const app = fastify({logger: true}).withTypeProvider<ZodProvider>();
 
@@ -31,6 +32,7 @@ app.register(fastifySwaggerUi, {
 app.register(routes);
 app.register(userController);
 app.register(productController);
+app.register(addressController);
 
 app.listen({ port: env.BACKEND_APP_PORT }, (err, address) => {
   if (err) {
