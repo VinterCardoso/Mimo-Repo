@@ -6,6 +6,7 @@ export type Product = {
     quantity: number;
     unavailable: boolean;
     deletedAt: Date;
+    photoUrl: string;
 }
 
 export interface IProductRepository {

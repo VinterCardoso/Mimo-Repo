@@ -29,5 +29,6 @@ model Product {
   quantity    Int      @default(0)
   unavailable Boolean  @default(false)
   deletedAt   DateTime? 
+  photoUrl    String?
   @@map("product")
 }
