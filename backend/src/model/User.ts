@@ -1,10 +1,12 @@
 import { Role } from "../types/Roles.js";
+import { Address } from "./Address.js";
 
 type User = {
     id: string;
     name: string;
     email: string;
     role: Role;
+    address: Address[]
 }
 
 interface IUserRepository {
