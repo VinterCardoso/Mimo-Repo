@@ -34,6 +34,8 @@ class ProductService implements IProductService {
         product.name = data.name || product.name;
         product.description = data.description || product.description;
         product.price = data.price || product.price;
+        product.quantity = data.quantity || product.quantity;
+        product.unavailable = data.unavailable || product.unavailable;
 
         return this.productRepository.update(id, product);
     }
@@ -45,7 +47,8 @@ class ProductService implements IProductService {
             throw new Error('Product not found');
         }
 
-        return this.productRepository.delete(id);
+        product.deletedAt = new Date();
+        this.productRepository.update(id, product);
     }
 }
 
