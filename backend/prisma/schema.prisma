@@ -19,6 +19,9 @@ model User {
   name        String?
   role        String   @default("USER")
   addresses   Address[]
+  cpf         String   @unique
+  password    String
+  phone       String
   @@map("user")
 }
 

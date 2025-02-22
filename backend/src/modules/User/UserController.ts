@@ -16,6 +16,11 @@ export async function userController(fastify: FastifyTypedInstance) {
         res.status(201).send(user);
     });
 
+    fastify.post('/users/change-password/:id', async(req, res) => {
+        await userService.changePassword(+req.params.id, req.body);
+        res.status(204).send();
+    })
+
     fastify.patch('/users/:id', async (req, res) => {
         const user = await userService.updateUser(+req.params.id, req.body);
         res.status(200).send(user);
