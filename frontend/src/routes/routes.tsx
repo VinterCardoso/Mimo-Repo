@@ -5,16 +5,21 @@ import { Home } from "../pages/Home/Home";
 import { Cart } from "../pages/Cart/Cart"
 import { DogItems } from "../pages/DogItems/DogItems"; 
 import { ProductList } from "../pages/Product/ProductList";
+import { TopbarLayout } from "../layouts/TopbarLayout";
+import { ProductDetails } from "../pages/Product/ProductDetails";
  
 const AppRoutes = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route element={<TopbarLayout />}>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/product/:id" element={<ProductDetails />} />
+                    <Route path="/cart" element={<Cart/>} />
+                    <Route path="/dog-items" element={<DogItems/>} />
+                </Route>
                 <Route path="/user-list" element={<UserList />} />
-                <Route path="/cart" element={<Cart/>} />
                 <Route path="/products" element={<ProductList />} />
-                <Route path="/dog-items" element={<DogItems/>} />
             </Routes>
         </BrowserRouter>
     )

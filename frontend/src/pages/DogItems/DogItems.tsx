@@ -4,7 +4,6 @@ import { Topbar } from "../../components/Topbar/Topbar";
 function DogItems() {
   return (
     <Box>
-        <Topbar />
     </Box>
   );
 }

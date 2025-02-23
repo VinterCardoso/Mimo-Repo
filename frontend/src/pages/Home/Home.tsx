@@ -1,14 +1,53 @@
 import { Box } from '@mui/material'; // Importando o Box do Material-UI
 import { Topbar } from '../../components/Topbar/Topbar'; // Importando o componente Topbar
+import { useEffect, useState } from 'react';
+import { Product } from '../../services/endpoints/ProductEndpoint';
+import api from '../../services/api';
+import { ProductCard } from '../../components/ProductCard/ProductCard';
+import DestaqueCachorro from '../../assets/cachorroDestaque.png';
+import DestaqueGato from '../../assets/gatoDestaque.png';
 
 function Home() {
-  return (
-    <Box>
-      {}
-      <Topbar />
+  const [products, setProducts] = useState<Product[]>([]);
 
-      {}
-      <Box />
+  useEffect(() => {
+    async function getProducts() {
+      const rawData = await api.product.listAll();
+      setProducts(rawData.data);
+    }
+
+    getProducts();
+  }, []);
+
+  return (
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center' }}>
+      <img src={DestaqueGato} alt="Destaque Gato" />
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          gap: '20px',
+          padding: '20px',
+        }}
+      >
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </Box>
+
+      <img src={DestaqueCachorro} alt="Destaque Cachorro" />
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          gap: '20px',
+          padding: '20px',
+        }}
+      >
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </Box>
     </Box>
   );
 }

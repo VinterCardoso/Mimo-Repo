@@ -15,6 +15,10 @@ export class ProductEndpoint {
         return await axios.get('/products')
     }
 
+    async getById(id: number): Promise<Product> {
+        return await axios.get(`/products/${id}`)
+    }
+
     async create(product: Product): Promise<Product> {
         return await axios.post('/products', product)
     }
