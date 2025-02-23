@@ -14,10 +14,14 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  name      String?
-  role      String   @default("USER")
+  id          Int      @id @default(autoincrement())
+  email       String   @unique
+  name        String?
+  role        String   @default("USER")
+  addresses   Address[]
+  cpf         String   @unique
+  password    String
+  phone       String
   @@map("user")
 }
 
@@ -31,4 +35,18 @@ model Product {
   deletedAt   DateTime? 
   photoUrl    String?
   @@map("product")
+}
+
+model Address {
+  id          Int      @id @default(autoincrement())
+  name        String
+  cep         String
+  state       String
+  city        String
+  street      String
+  number      String
+  complement  String?
+  userId      Int
+  user        User    @relation(fields: [userId], references: [id])
+ @@map("address")
 }
