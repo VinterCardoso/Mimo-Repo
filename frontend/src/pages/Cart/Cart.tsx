@@ -1,5 +1,17 @@
 import React, { useState } from 'react';
-import { Box, Typography, Button, TextField, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import {
+  Box,
+  Typography,
+  Button,
+  TextField,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from '@mui/material';
 import { Topbar } from '../../components/Topbar/Topbar';
 import AddIcon from '@mui/icons-material/Add';
 
@@ -26,14 +38,16 @@ export const Cart: React.FC = () => {
 
   // Função para remover um item do carrinho
   const handleRemoveItem = (id: number) => {
-    setCartItems(cartItems.filter(item => item.id !== id));
+    setCartItems(cartItems.filter((item) => item.id !== id));
   };
 
   // Função para atualizar a quantidade de um item
   const handleQuantityChange = (id: number, quantity: number) => {
-    setCartItems(cartItems.map(item =>
-      item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item
-    ));
+    setCartItems(
+      cartItems.map((item) =>
+        item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item
+      )
+    );
   };
 
   // Função para adicionar um novo item ao carrinho
@@ -59,40 +73,34 @@ export const Cart: React.FC = () => {
   };
 
   // Calcular o valor total do carrinho
-  const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const total = cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
 
   return (
     <Box
-    sx={{
-        width: "100vw",
-        display: "flex", 
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-        gap: "30px"
-    }}>
-      <Topbar />
-      <Box sx={{
-        display: "flex", 
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-        width: "45%",
-        marginBottom: "10px"  
-      }}>
-        
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        width: '45%',
+        marginBottom: '10px',
+      }}
+    >
       <Typography
-  variant="h4"
-  sx={{
-    fontWeight: 'bold',
-    color: 'primary.main',
-    marginBottom: 2,
-    fontFamily: 'Outfit, sans-serif',
-    textTransform: 'uppercase'
-  }}
->
-  Carrinho de Compras
-</Typography>
+        variant="h4"
+        sx={{
+          fontWeight: 'bold',
+          color: 'primary.main',
+          marginBottom: 2,
+          fontFamily: 'Outfit, sans-serif',
+          textTransform: 'uppercase',
+        }}
+      >
+        Carrinho de Compras
+      </Typography>
 
       {}
       <Box sx={{ marginBottom: 4 }}>
@@ -110,26 +118,33 @@ export const Cart: React.FC = () => {
             label="Preço"
             type="number"
             value={newItem.price}
-            onChange={(e) => setNewItem({ ...newItem, price: parseFloat(e.target.value) })}
+            onChange={(e) =>
+              setNewItem({ ...newItem, price: parseFloat(e.target.value) })
+            }
             sx={{ flex: 1 }}
           />
           <TextField
             label="Quantidade"
             type="number"
             value={newItem.quantity}
-            onChange={(e) => setNewItem({ ...newItem, quantity: parseInt(e.target.value) })}
+            onChange={(e) =>
+              setNewItem({ ...newItem, quantity: parseInt(e.target.value) })
+            }
             sx={{ flex: 1 }}
           />
           <Button variant="contained" onClick={handleAddItem}>
-          <AddIcon sx={{width: '24px', height: '24px', color: 'white'}}/>
+            <AddIcon sx={{ width: '24px', height: '24px', color: 'white' }} />
           </Button>
         </Box>
       </Box>
 
       {/* Tabela de itens do carrinho */}
-      <TableContainer sx={{ 
-        borderRadius: "10px"
-      }} component={Paper}>  
+      <TableContainer
+        sx={{
+          borderRadius: '10px',
+        }}
+        component={Paper}
+      >
         <Table>
           <TableHead>
             <TableRow>
@@ -149,13 +164,21 @@ export const Cart: React.FC = () => {
                   <TextField
                     type="number"
                     value={item.quantity}
-                    onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value))}
+                    onChange={(e) =>
+                      handleQuantityChange(item.id, parseInt(e.target.value))
+                    }
                     inputProps={{ min: 1 }}
                   />
                 </TableCell>
-                <TableCell align="right">R$ {(item.price * item.quantity).toFixed(2)}</TableCell>
                 <TableCell align="right">
-                  <Button variant="contained" color="secondary" onClick={() => handleRemoveItem(item.id)}>
+                  R$ {(item.price * item.quantity).toFixed(2)}
+                </TableCell>
+                <TableCell align="right">
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={() => handleRemoveItem(item.id)}
+                  >
                     Remover
                   </Button>
                 </TableCell>
@@ -169,7 +192,6 @@ export const Cart: React.FC = () => {
       <Typography variant="h6" gutterBottom sx={{ marginTop: 2 }}>
         Total: R$ {total.toFixed(2)}
       </Typography>
-      </Box>
     </Box>
   );
 };

@@ -6,14 +6,13 @@ import AppRoutes from './routes/routes';
 
 function App() {
   return (
-    // <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <SnackbarProvider>
-        <Box sx={{ backgroundColor: '#EDEDED', height: '100vh' }}>
-          {/* <Topbar /> */}
+        <Box sx={{ backgroundColor: '#EDEDED' }}>
           <AppRoutes />
         </Box>
       </SnackbarProvider>
-    // </ThemeProvider>
+    </ThemeProvider>
   );
 }
 
