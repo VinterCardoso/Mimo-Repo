@@ -8,6 +8,7 @@ import { routes } from './routes.js';
 import { userController } from './modules/User/UserController.js';
 import { productController } from './modules/Product/ProductController.js';
 import { addressController } from './modules/Address/AddressController.js';
+import { orderController } from './modules/Order/OrderController.js';
 
 const app = fastify({logger: true}).withTypeProvider<ZodProvider>();
 
@@ -33,6 +34,7 @@ app.register(routes);
 app.register(userController);
 app.register(productController);
 app.register(addressController);
+app.register(orderController);
 
 app.listen({ port: env.BACKEND_APP_PORT }, (err, address) => {
   if (err) {
