@@ -11,11 +11,6 @@ export async function productController(fastify: FastifyTypedInstance) {
         res.status(200).send(products);
     });
 
-    fastify.get('/products/:id', async (req, res) => {
-        const product = await productService.getProductById(+req.params.id);
-        res.status(200).send(product);
-    });
-
     fastify.post('/products', async (req, res) => {
         const product = await productService.createProduct(req.body);
         res.status(201).send(product);
