@@ -3,3 +3,9 @@
     height: 230px;
     object-fit: contain;
 }
+
+.imgFit {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
