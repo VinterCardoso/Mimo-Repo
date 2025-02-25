@@ -1,5 +1,4 @@
 import { Box } from '@mui/material'; // Importando o Box do Material-UI
-import { Topbar } from '../../components/Topbar/Topbar'; // Importando o componente Topbar
 import { useEffect, useState } from 'react';
 import { Product } from '../../services/endpoints/ProductEndpoint';
 import api from '../../services/api';
