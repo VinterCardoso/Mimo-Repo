@@ -29,8 +29,10 @@ function Home() {
           padding: '20px',
         }}
       >
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+        {products.map((product, index) => (
+          <>
+          {index < 5   && <ProductCard key={product.id} product={product} />}
+          </>
         ))}
       </Box>
 
@@ -43,8 +45,10 @@ function Home() {
           padding: '20px',
         }}
       >
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+        {products.map((product, index) => (
+          <>
+          {index < 5   && <ProductCard key={product.id} product={product} />}
+          </>
         ))}
       </Box>
     </Box>
