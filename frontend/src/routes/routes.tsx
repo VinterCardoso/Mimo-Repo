@@ -6,6 +6,7 @@ import { DogItems } from "../pages/DogItems/DogItems";
 import { ProductList } from "../pages/Product/ProductList";
 import { TopbarLayout } from "../layouts/TopbarLayout";
 import { ProductDetails } from "../pages/Product/ProductDetails";
+import { UserPublic } from "../pages/User/UserPublic";
 
 const AppRoutes = () => {
     return (
@@ -16,6 +17,7 @@ const AppRoutes = () => {
                     <Route path="/product/:id" element={<ProductDetails />} />
                     <Route path="/checkout" element={<Checkout/>} />
                     <Route path="/dog-items" element={<DogItems/>} />
+                    <Route path="/user" element={<UserPublic />} />
                 </Route>
                 <Route path="/user-list" element={<UserList />} />
                 <Route path="/products" element={<ProductList />} />

@@ -8,7 +8,6 @@ import SentimentSatisfiedAltOutlinedIcon from '@mui/icons-material/SentimentSati
 import colors from '../../colors';
 import { TopbarSections } from './TopbarSections';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 import { useCart } from '../../contexts/CartContext';
 
 function Topbar() {
@@ -72,6 +71,7 @@ function Topbar() {
             onClick={() => navigate('/checkout')}
           />
           <SentimentSatisfiedAltOutlinedIcon
+            onClick={() => navigate('/user')}
             sx={{ width: '24px', height: '24px', color: colors.primary }}
           />
         </Box>

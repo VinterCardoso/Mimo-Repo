@@ -11,6 +11,11 @@ export async function addressController(fastify: FastifyTypedInstance) {
         res.status(200).send(address);
     });
 
+    fastify.get('/address/user/:id', async (req, res) => {
+        const address = await addressService.listAddressByUserId(+req.params.id);
+        res.status(200).send(address);
+    });
+
     fastify.post('/address', async (req, res) => {
         const address = await addressService.createAddress(req.body);
         res.status(201).send(address);

@@ -51,6 +51,10 @@ class AddressService implements IAddressService {
 
         this.addressRepository.delete(id);
     }
+
+    async listAddressByUserId(userId) {
+        return this.addressRepository.findByUserId(userId);
+    }
 }
 
 export { AddressService };

@@ -4,6 +4,7 @@ import { z } from 'zod'
 const envSchema = z.object({
     BACKEND_APP_PORT: z.coerce.number(),
     DATABASE_URL: z.coerce.string(),
+    JWT_SECRET: z.coerce.string(),
 })
 
 const getEnv = envSchema.safeParse(process.env)
