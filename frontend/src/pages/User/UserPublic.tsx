@@ -14,10 +14,20 @@ function UserPublic() {
     passwordConfirm: '',
     phone: '',
   };
+  const initialAddress = {
+    name: '',
+    cep: '',
+    state: '',
+    city: '',
+    street: '',
+    number: '',
+    complement: '',
+  }
   const { user, login, logout, isLogged } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userRegister, setUserRegister] = useState(initialUser);
+  const [adressRegister, setAddressRegister] = useState(initialAddress);
   const { enqueueSnackbar } = useSnackbar();
 
   async function verifyFields() {
@@ -62,6 +72,7 @@ function UserPublic() {
   return (
     <Box>
       {user ? (
+        <>
         <Box
           sx={{
             display: 'flex',
@@ -92,10 +103,8 @@ function UserPublic() {
             </Button>
           </Box>
           <AddressList />
-          <Button variant="contained" color="contrast" sx={{ width: '200px' }}>
-            Novo endereço
-            </Button>
         </Box>
+        </>
       ) : (
         <Box
           sx={{

@@ -7,6 +7,7 @@ import { ProductList } from "../pages/Product/ProductList";
 import { TopbarLayout } from "../layouts/TopbarLayout";
 import { ProductDetails } from "../pages/Product/ProductDetails";
 import { UserPublic } from "../pages/User/UserPublic";
+import { PageInConstruction } from "../pages/PageInConstruction/PageInConstruction";
 
 const AppRoutes = () => {
     return (
@@ -18,6 +19,7 @@ const AppRoutes = () => {
                     <Route path="/checkout" element={<Checkout/>} />
                     <Route path="/dog-items" element={<DogItems/>} />
                     <Route path="/user" element={<UserPublic />} />
+                    <Route path="/more" element={<PageInConstruction/>} />
                 </Route>
                 <Route path="/user-list" element={<UserList />} />
                 <Route path="/products" element={<ProductList />} />

@@ -3,13 +3,12 @@ import { Address } from '../../services/endpoints/AddressEndpoint';
 import colors from '../../colors';
 import DeleteIcon from '@mui/icons-material/Delete';
 import HouseIcon from '@mui/icons-material/House';
+import { useSnackbar } from 'notistack';
+import api from '../../services/api';
 
-function AddressCard(props: { address: Address }) {
-  const { address } = props;
-
-  function deleteAddress() {
-    console.log('deletar');
-  }
+function AddressCard(props: { address: Address, deleteAddress: (id) => void }) {
+  const { address, deleteAddress } = props;
+  const {enqueueSnackbar} = useSnackbar();
 
   return (
     <Box
@@ -32,6 +31,9 @@ function AddressCard(props: { address: Address }) {
           }}
         >
           <Typography variant="span" color="#8B8B8B" fontWeight={800}>
+            {address.name}
+          </Typography>
+          <Typography variant="span" color="#8B8B8B" fontWeight={800}>
             {address.street}, {address.number} - {address.complement}
           </Typography>
           <Typography variant="span" color="#8B8B8B">
@@ -41,7 +43,7 @@ function AddressCard(props: { address: Address }) {
       </Box>
       <DeleteIcon
         sx={{ color: 'tomato', ':hover': { cursor: 'pointer' } }}
-        onClick={() => deleteAddress()}
+        onClick={() => deleteAddress(address.id)}
       />
     </Box>
   );

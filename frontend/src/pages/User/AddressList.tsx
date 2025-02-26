@@ -17,6 +17,7 @@ function AddressList() {
         userId: ''
     });
     const [isCreating, setIsCreating] = useState<boolean>(false);
+    const [shouldReload, setShouldReload] = useState<number>(0);
     const { user } = useAuth();
     const { enqueueSnackbar } = useSnackbar();
 
@@ -30,7 +31,11 @@ function AddressList() {
             }
         }
         getAddresses();
-    }, [user?.id, enqueueSnackbar]);
+    }, [user?.id, enqueueSnackbar, shouldReload]);
+
+    function reloadAddresses() {
+        setShouldReload(prevState => prevState + 1);
+    }
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -39,6 +44,16 @@ function AddressList() {
             [name]: value
         }));
     };
+
+  async function deleteAddress(id:number) {
+    try {
+      const res = await api.address.delete(id);
+      enqueueSnackbar('Endereço deletado com sucesso', { variant: 'success' });
+      reloadAddresses();
+    } catch (error) {
+      enqueueSnackbar('Erro ao deletar endereço', { variant: 'error' });
+    }
+  }
 
     const handleAddAddress = async () => {
         if (!user) {
@@ -54,10 +69,13 @@ function AddressList() {
             setAddresses(prevAddresses => [...prevAddresses, response.data]);
             enqueueSnackbar('Endereço adicionado com sucesso', { variant: 'success' });
             setNewAddress({
+                name: '',
+                cep: '',
                 street: '',
                 number: '',
                 city: '',
                 state: '',
+                complement: '',
                 userId: ''
             });
             setIsCreating(false);
@@ -84,7 +102,7 @@ function AddressList() {
                 gap: '16px', 
                 padding: '10px' }}>
                 {addresses.map((address, index) => (
-                    <AddressCard key={index} address={address} />
+                    <AddressCard key={index} address={address} deleteAddress={deleteAddress}/>
                 ))}
             </Box>
 
@@ -108,6 +126,28 @@ function AddressList() {
                     padding: '20px' 
                 }}>
                     <Grid container spacing={2}>
+                        <Grid item xs={12} sm={8}>
+                            <Typography variant="subtitle1" gutterBottom>Nome do endereço</Typography>
+                            <TextField
+                                fullWidth
+                                size="small"
+                                variant="outlined"
+                                name="name"
+                                value={newAddress.name}
+                                onChange={handleInputChange}
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={4}>
+                            <Typography variant="subtitle1" gutterBottom>CEP</Typography>
+                            <TextField
+                                fullWidth
+                                size="small"
+                                variant="outlined"
+                                name="cep"
+                                value={newAddress.cep}
+                                onChange={handleInputChange}
+                            />
+                        </Grid>
                         <Grid item xs={12} sm={12}>
                             <Typography variant="subtitle1" gutterBottom>Rua</Typography>
                             <TextField
@@ -150,6 +190,17 @@ function AddressList() {
                                 variant="outlined"
                                 name="state"
                                 value={newAddress.state}
+                                onChange={handleInputChange}
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={12}>
+                            <Typography variant="subtitle1" gutterBottom>Complemento</Typography>
+                            <TextField
+                                fullWidth
+                                size="small"
+                                variant="outlined"
+                                name="complement"
+                                value={newAddress.complement}
                                 onChange={handleInputChange}
                             />
                         </Grid>
