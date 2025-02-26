@@ -12,15 +12,11 @@ function TopbarSections() {
         { name: 'gato', url: '/cat-items' },
         { name: 'pássaro', url: '/bird-items' },
         { name: 'peixe', url: '/fish-items' },
-        { name: 'outros pets', url: '/other-pets' },
-        { name: 'outlet até 90% off', url: '/outlet' },
-        { name: 'mimo healthcare', url: '/mimo-healthcare' },
-        { name: 'clube de fidelidade', url: '/loyalty-club' },
         { name: 'mais', url: '/more' }
     ];
 
     return (
-        <Box sx={{display: 'flex', gap: '20px', alignItems: 'center', backgroundColor: 'white', borderRadius: '8px', padding: '10px 20px'}}>
+        <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: 'white', borderRadius: '8px', padding: '10px 20px', minWidth: '600px'}}> 
             {sections.map(section => (
                 <Link
                     key={section.name}

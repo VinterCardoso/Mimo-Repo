@@ -21,6 +21,11 @@ export async function userController(fastify: FastifyTypedInstance) {
         res.status(204).send();
     })
 
+    fastify.post('/users/login', async (req, res) => {
+        const user = await userService.login(req.body);
+        res.status(200).send(user);
+    });
+
     fastify.patch('/users/:id', async (req, res) => {
         const user = await userService.updateUser(+req.params.id, req.body);
         res.status(200).send(user);

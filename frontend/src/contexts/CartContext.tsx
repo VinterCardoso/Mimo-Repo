@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useMemo, useCallback, useEf
 import { enqueueSnackbar } from 'notistack'
 import api from '../services/api'
 import { Product } from '../services/endpoints/ProductEndpoint'
+import { useAuth } from './AuthContext'
 
 export type CartItem = {
     product: Product
@@ -25,6 +26,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     const [cart, setCart] = useState<CartItem[]>([])
     const [isLoading, setIsLoading] = useState<boolean>(true)
     const [success, setSuccess] = useState<boolean>(false)
+    const { user } = useAuth()
 
     useEffect(() => {
         const cart = localStorage.getItem('@petfood:cart')
@@ -77,7 +79,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
                     quantity: item.quantity,
                 })),
                 total: cartSubTotal,
-                userId: 1,
+                userId: user!.id || 1
             }
             await api.order.create(order)
             enqueueSnackbar('Pedido finalizado com sucesso', { variant: 'success' })

@@ -13,6 +13,10 @@ class AddressRepository implements IAddressRepository {
     async findById(id): Promise<Address> {
         return prisma.address.findUnique({ where: { id } });
     }
+
+    async findByUserId(userId): Promise<Address[]> {
+        return prisma.address.findMany({ where: { userId } });
+    }
     
     async update(id, data): Promise<Address> {
         return prisma.address.update({ where: { id }, data });

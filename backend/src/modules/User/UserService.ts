@@ -1,6 +1,8 @@
 import { IUserService } from "../../model/User.js";
 import { UserRepository } from "./UserRepository.js";
 import bcrypt from "bcrypt";
+import jwt from 'jsonwebtoken'
+import { env } from "../../infra/env.js";
 
 class UserService implements IUserService {
     constructor(
@@ -67,7 +69,21 @@ class UserService implements IUserService {
             return;
         }
         throw new Error('Password not correct');
+    }
 
+    async login(data) {
+        const user = await this.userRepository.findByEmail(data.email);
+
+        if (!user) {
+            throw new Error('User not found');
+        }
+
+        if (await bcrypt.compare(data.password, user.password)) {
+            const token = jwt.sign({ id: user.id, email: user.email, role: user.role}, env.JWT_SECRET, { expiresIn: '99d' });
+            return {user, token};
+        }
+
+        throw new Error('Password not correct');
     }
 }
 
