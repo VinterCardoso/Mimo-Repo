@@ -77,7 +77,7 @@ model Order {
 model Category {
   id          Int      @id @default(autoincrement())
   name        String
-  category    ProductHasCategory[]
+  productHasCategory    ProductHasCategory[]
   @@map("category")
 }
 
