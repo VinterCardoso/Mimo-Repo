@@ -14,8 +14,8 @@ class OrderRepository implements IOrderRepository {
         return prisma.order.findFirst({ where: { id }, include: { orderHasProduct: true } });
     }
     
-    async addProductToOrder(orderId:number, productId:number, quantity:number): Promise<Order> {
-        return prisma.orderHasProduct.create({ data: { orderId, productId, quantity } });
+    async addProductToOrder(orderId:number, productId:number, quantity:number): Promise<void> {
+        prisma.orderHasProduct.create({ data: { orderId, productId, quantity } });
     }
 }
 

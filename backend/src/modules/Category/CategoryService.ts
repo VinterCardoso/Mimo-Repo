@@ -11,7 +11,7 @@ class CategoryService implements ICategoryService {
         return this.categoryRepository.getAll();
     }
 
-    async createCategory(data: Category): Promise<Category> {
+    async createCategory(data: Partial<Category>): Promise<Category> {
         return this.categoryRepository.create(data);
     }
 
@@ -25,14 +25,14 @@ class CategoryService implements ICategoryService {
         return category;
     }
 
-    async addCategoryToProduct(categoryId: number, productId: number): Promise<Category> {
+    async addCategoryToProduct(categoryId: number, productId: number): Promise<void> {
         const category = await this.categoryRepository.findByCategoryId(categoryId);
 
         if (!category) {
             throw new Error('Category not found');
         }
 
-        return this.categoryRepository.addCategoryToProduct(categoryId, productId);
+        this.categoryRepository.addCategoryToProduct(categoryId, productId);
     }
 
     async deleteCategory(id: number): Promise<void> {

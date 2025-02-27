@@ -23,7 +23,7 @@ class AddressRepository implements IAddressRepository {
     }
     
     async delete(id): Promise<void> {
-        return prisma.address.delete({ where: { id } });
+        prisma.address.delete({ where: { id } });
     }
 }
 

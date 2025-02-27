@@ -15,8 +15,8 @@ class CategoryRepository implements ICategoryRepository {
         return prisma.category.findFirst({ where: { id } });
     }
     
-    async addCategoryToProduct(categoryId:number, productId:number): Promise<Category> {
-        return prisma.productHasCategory.create({ data: { categoryId, productId} });
+    async addCategoryToProduct(categoryId:number, productId:number): Promise<void> {
+        prisma.productHasCategory.create({ data: { categoryId, productId} });
     }
 
     async delete(id: number): Promise<void> {
