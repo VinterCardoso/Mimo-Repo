@@ -1,6 +1,7 @@
 # Indice
 
 - [Objetivo](#objetivo)
+- [Padrão de projeto](#padrão-de-projeto)
 - [Tecnologias utilizadas](#tecnologias-utilizadas)
 - [Primeiros passos](#primeiros-passos)
 - [Guia para contribuição](#guia-para-contribuição)
@@ -8,6 +9,14 @@
 # Objetivo
 
 Esse repositório tem como objetivo o desenvolvimento de um projeto colaborativo com tema de loja de pets com a utilização de um padrão de projeto proposto na matéria de Engenharia de software da UTFPR.
+
+# Padrão de projeto
+
+O padrão de projeto escolhido foi o Visitor.
+
+O Visitor é um padrão comportamental que permite adicionar novas operações a uma estrutura de objetos sem modificar suas classes. Ele é útil quando se deseja separar algoritmos da estrutura de dados, facilitando a manutenção e a extensão do código.
+
+No contexto deste projeto, o padrão Visitor é utilizado para exportação de pedidos e produtos em diferentes formatos, como PDF e Excel, sem precisar modificar as classes de domínio (Order, Product). Cada formato de exportação é tratado por um visitante específico (PDFOrderVisitor, ExcelOrderVisitor), garantindo flexibilidade e modularidade.
 
 # Tecnologias utilizadas
 Ambos os repositórios foram criados utilizando Typescript e o banco de dados escolhido foi MySQL.
