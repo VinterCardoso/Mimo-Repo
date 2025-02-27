@@ -5,13 +5,16 @@ export type Order = {
     createdAt: Date;
 }
 
-export interface IProductRepository {
-    create(data: Product): Promise<Product>;
-    findByUserId(id: number): Promise<Product[]>;
-    findByOrderId(id: number): Promise<Product>;
+export interface IOrderRepository {
+    create(data: Order): Promise<Order>;
+    findByUserId(id: number): Promise<Order[]>;
+    findByOrderId(id: number): Promise<Order>;
+    addProductToOrder(orderId: number, productId: number, quantity: number): Promise<void>;
 }
 
-export interface IProductService {
-    createProduct(data: Product): Promise<Product>;
-    listProducts(): Promise<Product[]>;
+export interface IOrderService {
+    createOrder(data: Order): Promise<Order>;
+    getOrderByUserId(id: number): Promise<Order[]>;
+    getOrderByOrderId(id: number): Promise<Order>;
+    addProductToOrder(orderId: number, product: number, quantity: number): Promise<void>;
 }

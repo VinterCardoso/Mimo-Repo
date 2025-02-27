@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1740620110646" clover="3.2.0">
+  <project timestamp="1740620110646" name="All files">
+    <metrics statements="50" coveredstatements="44" conditionals="21" coveredconditionals="16" methods="12" coveredmethods="11" elements="83" coveredelements="71" complexity="0" loc="50" ncloc="50" packages="2" files="2" classes="2"/>
+    <package name="Order">
+      <metrics statements="27" coveredstatements="21" conditionals="6" coveredconditionals="3" methods="6" coveredmethods="5"/>
+      <file name="OrderService.ts" path="/home/davi/UTF/Projeto-Final-Engenharia-de-Software/backend/src/modules/Order/OrderService.ts">
+        <metrics statements="27" coveredstatements="21" conditionals="6" coveredconditionals="3" methods="6" coveredmethods="5"/>
+        <line num="6" count="5" type="stmt"/>
+        <line num="10" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="16" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="35" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="45" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="55" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="59" count="2" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="Product">
+      <metrics statements="23" coveredstatements="23" conditionals="15" coveredconditionals="13" methods="6" coveredmethods="6"/>
+      <file name="ProductService.ts" path="/home/davi/UTF/Projeto-Final-Engenharia-de-Software/backend/src/modules/Product/ProductService.ts">
+        <metrics statements="23" coveredstatements="23" conditionals="15" coveredconditionals="13" methods="6" coveredmethods="6"/>
+        <line num="6" count="8" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="20" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="30" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="34" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="35" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="36" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="37" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="38" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="39" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
+        <line num="47" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

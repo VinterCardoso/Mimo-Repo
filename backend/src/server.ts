@@ -1,7 +1,7 @@
 import { fastify } from 'fastify';
 import fastifyCors from '@fastify/cors';
-import { env } from './infra/env';
-import { validatorCompiler, serializerCompiler } from 'fastify-type-provider-zod';
+import { env } from './infra/env.js';
+import { validatorCompiler, serializerCompiler, ZodTypeProvider } from 'fastify-type-provider-zod';
 import fastifySwagger from '@fastify/swagger';
 import fastifySwaggerUi from '@fastify/swagger-ui';
 import { routes } from './routes.js';
@@ -11,7 +11,7 @@ import { addressController } from './modules/Address/AddressController.js';
 import { orderController } from './modules/Order/OrderController.js';
 import { categoryController } from './modules/Category/CategoryController.js';
 
-const app = fastify({logger: true}).withTypeProvider<ZodProvider>();
+const app = fastify({logger: true}).withTypeProvider<ZodTypeProvider>();
 
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);

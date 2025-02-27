@@ -1,6 +1,5 @@
 import { prisma } from "../../infra/database.js";
 import { IUserRepository, User } from "../../model/User.js";
-import { User } from "../../model/User.js";
 
 class UserRepository implements IUserRepository {
     async create(data): Promise<User> {
@@ -23,8 +22,8 @@ class UserRepository implements IUserRepository {
         return prisma.user.update({ where: { id }, data });
     }
     
-    async delete(id): void {
-        return prisma.user.delete({ where: { id } });
+    async delete(id: number): Promise<void> {
+        prisma.user.delete({ where: { id } });
     }
 }
 

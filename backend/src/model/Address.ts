@@ -10,21 +10,22 @@ export type Address = {
     number: string
     complement?: string
     userId: number
-    user: User
 }
 
 export interface IAddressRepository {
     create(data: Address): Promise<Address>;
     findMany(): Promise<Address[]>;
     findById(id: number): Promise<Address>;
+    findByUserId(userId: number): Promise<Address[]>;
     update(id: number, data: Address): Promise<Address>;
     delete(id: number): Promise<void>;
 }
 
 export interface IAddressService {
-    create(data: Address): Promise<Address>;
-    list(): Promise<Address[]>;
-    getById(id: number): Promise<Address>;
-    update(id: number, data: Address): Promise<Address>;
-    delete(id: number): Promise<void>;
+    createAddress(data: Address): Promise<Address>;
+    listAddress(): Promise<Address[]>;
+    getAddressById(id: number): Promise<Address>;
+    updateAddress(id: number, data: Address): Promise<Address>;
+    deleteAddress(id: number): Promise<void>;
+    listAddressByUserId(userId: number): Promise<Address[]>;
 }

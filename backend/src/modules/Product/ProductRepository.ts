@@ -1,5 +1,5 @@
 import { prisma } from "../../infra/database.js";
-import { IProductRepository, Product } from "../../model/Product.ts";
+import { IProductRepository, Product } from "../../model/Product.js";
 
 class ProductRepository implements IProductRepository {
     async create(data): Promise<Product> {
@@ -18,8 +18,8 @@ class ProductRepository implements IProductRepository {
         return prisma.product.update({ where: { id }, data });
     }
     
-    async delete(id): Promise<void> {
-        return prisma.product.delete({ where: { id } });
+    async delete(id: number): Promise<void> {
+        prisma.product.delete({ where: { id } });
     }
 }
 
