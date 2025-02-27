@@ -1,5 +1,6 @@
 import { IOrderService } from "../../model/Order.js";
 import { OrderRepository } from "./OrderRepository.js";
+import { IOrderVisitor } from "./IOrderVisitor.js";
 
 class OrderService implements IOrderService {
     constructor(
@@ -57,6 +58,24 @@ class OrderService implements IOrderService {
         }
 
         return this.orderRepository.addProductToOrder(orderId, product, quantity);
+    }
+
+    async exportOrder(orderId: number, visitor: IOrderVisitor): Promise<Buffer | string> {
+        const order = await this.orderRepository.findByOrderId(orderId);
+
+        if (!order) {
+            throw new Error('Order not found');
+        }
+
+        visitor.visitOrder(order);
+
+        const orderHasProducts = await this.orderRepository.getProductsByOrderId(orderId);
+        console.log(orderHasProducts);
+        orderHasProducts.forEach(order => {
+            visitor.visitProduct(order.product, order.quantity);
+        });
+
+        return visitor.getResult();
     }
 }
 
